@@ -1,7 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const EditReadytowork = () => {
+
+const navigate=useNavigate()
+
+
+const handleClick=()=>{
+  return navigate("/profile")
+}
+
   return (
     <div className="my-28">
       <div className="w-1/3 container mx-auto">
@@ -20,7 +28,7 @@ const EditReadytowork = () => {
   </div>
   <div className="flex justify-center my-10 space-x-6">
     
-<button className="btn btn-outline btn-primary font-semibold text-base">Save</button>
+<button className="btn btn-outline btn-primary font-semibold text-base" onClick={handleClick}>Save</button>
 
 <button className="btn btn-outline font-semibold text-base">Cancel </button>
   </div>

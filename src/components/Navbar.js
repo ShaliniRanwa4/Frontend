@@ -1,53 +1,41 @@
-import React from "react";
+
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { removeUser } from "../utils/userSlice";
 
 const Navbar = () => {
-  const navigate = useNavigate();
 
-  const handleLoginJobSeeker = () => {
-    return navigate("/login");
-  };
+  const user=useSelector((store)=>store.user)
+  const dispatch=useDispatch()
+  const navigate=useNavigate()
 
-  const handleLoginEmployer = () => {
-    return navigate("/employLogin");
-  };
+  const handleLogout=()=>{
+    dispatch(removeUser())
+    return navigate('/home')
+  }
+ 
   return (
-    <div>
-      <div className="navbar bg-base-300 w-full shadow-lg p-2 top-0 z-50 fixed ">
-        <div className="flex-1 ">
-          {/* <button className="btn btn-ghost text-xl">Job Portal</button>
-           */}
-          <Link to={"/"} className="font-extrabold text-3xl">
-            {" "}
-            Job Portal
-          </Link>
-        </div>
-        <div className="flex-none gap-2">
-          <div className="form-control">
-            <input
-              type="text"
-              placeholder="Search"
-              className="input input-bordered w-24 md:w-auto"
-            />
-          </div>
-          {/* <Link to={"/login"}>login</Link> */}
-          <button className="btn btn-outline ">Search</button>
-          <button
-            className="btn btn-outline btn-success mx-4"
-            onClick={handleLoginJobSeeker}
-          >
-            Job seeker Log In/Sign In
-          </button>
-          <button
-            className="btn btn-outline btn-warning"
-            onClick={handleLoginEmployer}
-          >
-            {" "}
-            Employer Log In/Sign In{" "}
-          </button>
 
-          <div className="dropdown dropdown-end">
-            <div
+
+<nav className="flex items-center justify-between p-4 bg-base-300 text-white fixed w-full top-0 z-50 text-lg">
+  
+ 
+   <ul className="flex space-x-8 items-center">
+   <Link to={"/"}><div className="text-2xl font-bold">Job Portal </div></Link>
+    <li><Link to={'/home'} className="hover:text-gray-300">Home</Link></li>
+    <li><Link to={"/companyreviews"} className="hover:text-gray-300">Company Reviews</Link></li>
+    <li><Link to={'/contactus'} className="hover:text-gray-300">Contact Us</Link></li>
+  </ul>
+  <ul className="flex space-x-6 items-center">
+    {/* <li><Link className="hover:text-gray-300">search</Link></li> */}
+    {  !user && <><li><Link to={"/login"} className="hover:text-gray-300">Login </Link></li>
+    <li><Link to={"/login"} className="hover:text-gray-300">Employers / Post Job </Link></li></> }
+    {user && <>
+      <li><Link to={'/notification'} className="hover:text-gray-300 text-2xl">🕭</Link></li>
+      <li><Link to={'/messages'} className="hover:text-gray-300 text-2xl">💬</Link></li>
+    <li>
+    <div className="dropdown dropdown-end">
+         <div
               tabIndex={0}
               role="button"
               className="btn btn-ghost btn-circle avatar"
@@ -59,7 +47,7 @@ const Navbar = () => {
                 />
               </div>
             </div>
-            <ul
+          <ul
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
@@ -73,13 +61,21 @@ const Navbar = () => {
                 <Link to={"/settings"} className="text-base">Settings</Link>
               </li>
               <li>
-                <Link to={"/logout"} className="text-base">Logout</Link>
+                <Link to={"/home"} className="text-base" onClick={handleLogout}>Logout</Link>
               </li>
             </ul>
           </div>
-        </div>
-      </div>
-    </div>
+          
+    </li>
+    </>}
+  </ul>
+</nav>
+
+
+
+    
+      
+    
   );
 };
 

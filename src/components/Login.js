@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { checkSignInValidateData } from "../utils/validate";
+import { Link,  useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
-  const [isLogin, setIsLogin] = useState(true);
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  
+
   const [emailId, setEmailId] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  
+  const navigate= useNavigate()
+
+  const dispatch=useDispatch()
  
 
  const handleSignInSubmit = () => {
@@ -17,54 +21,26 @@ const Login = () => {
       setError("Error : "+error);
       return;
     }
-    
-    setError(null);
-    
+    setError(null)
+    dispatch(addUser({emailId:emailId,
+      password:password
+    }))
+    return navigate("/admin/homepage")
  }
 
 
   return (
     <div>
-      <div className="flex justify-center items-center h-screen  mt-10 mb-20 ">
-        <div className="card bg-base-300  w-96 shadow-xl ">
-          <div className="card-body">
-            <h2 className="card-title justify-center">
-              {isLogin ? "Login" : "Sign Up"}
+      <div className="flex justify-center items-center h-screen  mx-auto ">
+        <div className="card bg-base-300  shadow-xl w-1/4 h-auto ">
+          <div className="card-body ">
+            <h2 className="card-title justify-center text-2xl">
+              Login 
             </h2>
 
-            {!isLogin && (
-              <>
-                <label className="form-control w-full max-w-xs">
-                  <div className="label">
-                    <span className="label-text">First Name :</span>
-                  </div>
-                  <input
-                    type="text"
-                    placeholder="Enter First Name"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    className="input input-bordered w-full max-w-xs"
-                  />
-                </label>
-                {/* <p>{error}</p> */}
-                <label className="form-control w-full max-w-xs">
-                  <div className="label">
-                    <span className="label-text">Last Name :</span>
-                  </div>
-                  <input
-                    type="text"
-                    placeholder="Enter Last Name"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    className="input input-bordered w-full max-w-xs"
-                  />
-                </label>
-                
-                {/* <p>{error}</p> */}
-              </>
-            )}
+          
 
-            <label className="form-control w-full max-w-xs">
+            <label className="form-control w-full ">
               <div className="label">
                 <span className="label-text">EmailId ID :</span>
               </div>
@@ -73,7 +49,7 @@ const Login = () => {
                 placeholder="E-mail"
                 value={emailId}
                 onChange={(e) => setEmailId(e.target.value)}
-                className="input input-bordered w-full max-w-xs"
+                className="input input-bordered w-full"
               />
             </label>
             {/* <p className="text-red-400">{error}</p> */}
@@ -86,22 +62,11 @@ const Login = () => {
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="input input-bordered w-full max-w-xs"
+                className="input input-bordered w-full "
               />
             </label>
 
-            {!isLogin && <label className="form-control w-full max-w-xs">
-                  <div className="label">
-                    <span className="label-text">Confirm Password :</span>
-                  </div>
-                  <input
-                    type="password"
-                    placeholder="Enter Password Again"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="input input-bordered w-full max-w-xs"
-                  />
-                </label>}
+           
 
 
             <p className="text-red-400">{error}</p>
@@ -109,23 +74,20 @@ const Login = () => {
 
 
             {/* <p className="text-red-400">error</p> */}
-            <div className="card-actions justify-center m-2">
+            <div className="card-actions justify-center mb-5">
               <button className="btn btn-primary" 
-              // {isLogin?onClick={handleSignInSubmit}:onClick={handleSignUpSubmit}}
               onClick={handleSignInSubmit}
               >
-                {isLogin ? "Login" : "Sign Up"}
+              Login 
               </button>
             </div>
-            <p
-              className="cursor-pointer m-auto font-semibold"
-              // onSubmit={(e)=>e.preventDefault()}
-              onClick={() => setIsLogin(!isLogin)}
+            <Link to={'/signUp'}
+              className="cursor-pointer mx-auto font-semibold"
+             
             >
-              {isLogin
-                ? "New User ? Sign Up here !!"
-                : "Already Registered ? Login here!!"}
-            </p>
+              
+                New User ? Sign Up here !!
+            </Link>
           </div>
         </div>
       </div>

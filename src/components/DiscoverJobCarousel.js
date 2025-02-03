@@ -24,8 +24,7 @@ const DiscoverJobCarousel = () => {
     <div>
       <div className="  flex justify-center items-center mx-auto mt-12 w-11/12   ">
         <div className="carousel carousel-end rounded-box border border-orange-300 shadow-lg mb-7 bg-red-300 bg-opacity-30 h-96">
-          {/* <h1 className="relative z-50"> Discover jobs across popular roles</h1> */}
-          {/* <div className="carousel-item"> */}
+          
           <figure className=" pt-16 w-96  ">
           
             <img
@@ -43,13 +42,8 @@ const DiscoverJobCarousel = () => {
           <div className="carousel-item cursor-pointer" >
                       {mockData.map((data) => {
                         return (
-                          <div key={data.id} className="card bg-base-100 w-96 shadow-lg">
-                            {/* <figure className="h-40">
-                              <img
-                                src="https://images.pexels.com/photos/7078175/pexels-photo-7078175.jpeg?auto=compress&cs=tinysrgb&w=400"
-                                alt="Shoes"
-                              />
-                            </figure> */}
+                          <div key={data.id} className="card bg-base-100 w-96 shadow-lg rounded-none mr-1 border border-white">
+                          
                             <div className="card-body">
                               <h2 className="card-title font-bold text-blue-400">
                                 Role :  {data.job_category} : {data.company}
