@@ -25,21 +25,21 @@ const Homepage = () => {
   // } = mockData
   return (
     <>
-     <Link to={'/login'}> <h2 className="flex justify-end text-base text-orange-400 cursor-pointer mt-24" > Want personalized job matches ? Login /Sign Up ! </h2></Link>
+     <Link to={'/login'}> <h2 className="flex justify-end text-base text-blue-400 cursor-pointer top-0 pt-24" > Want personalized job matches ? Login /Sign Up ! </h2></Link>
 
     
 
-      <h1 className="flex justify-center items-center font-extrabold my-5 text-yellow-700 card-title text-3xl  ">
+      <h1 className="flex justify-center items-center font-extrabold my-5 text-black card-title text-3xl  ">
         Welcome To Job Portal{" "} 👋 Simplify your job search 
       </h1>
 
       <DiscoverJobCarousel></DiscoverJobCarousel>
     
-      <h1 className="flex justify-center items-center font-extrabold my-5 text-blue-700 card-title ">
+      <h1 className="flex justify-center items-center font-extrabold my-5 text-blue-500 card-title ">
         Recent Job Openings 
       </h1>
       <div className="  flex justify-center items-center mx-auto mt-10  w-11/12 cursor-pointer ">
-        <div className="carousel carousel-end rounded-box  border border-orange-300 shadow-lg mb-8 h-96" >
+        <div className="carousel carousel-end rounded-box  border border-white shadow-lg mb-8 h-96" >
           <div className="carousel-item " >
             {mockData.map((data) => {
               return (
@@ -71,11 +71,11 @@ const Homepage = () => {
 
 
       
-         <h1 className="flex justify-center items-center font-extrabold my-5 text-blue-700 card-title ">
+         <h1 className="flex justify-center items-center font-extrabold my-5 text-blue-500 card-title ">
          Top companies hiring now
       </h1>
       <div className="  flex justify-center items-center mx-auto mt-10  w-11/12 cursor-pointer ">
-        <div className="carousel carousel-end rounded-box border border-orange-300 shadow-lg mb-12 h-96" >
+        <div className="carousel carousel-end rounded-box border border-white shadow-lg mb-12 h-96" >
           <div className="carousel-item" >
             {mockData.map((data) => {
               return (

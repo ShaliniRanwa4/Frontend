@@ -23,7 +23,7 @@ const DiscoverJobCarousel = () => {
   return (
     <div>
       <div className="  flex justify-center items-center mx-auto mt-12 w-11/12   ">
-        <div className="carousel carousel-end rounded-box border border-orange-300 shadow-lg mb-7 bg-red-300 bg-opacity-30 h-96">
+        <div className="carousel carousel-end rounded-box border border-blue-400 shadow-lg mb-7 bg-white h-96">
           
           <figure className=" pt-16 w-96  ">
           
@@ -32,12 +32,12 @@ const DiscoverJobCarousel = () => {
               src="https://static.naukimg.com/s/0/0/i/role-collection-ot.png"
               alt="Shoes"
             />
-            <h1 className="my-6 ml-7 text-3xl text-white font-bold"> Discover jobs across popular roles</h1>
+            <h1 className="my-6 ml-7 text-3xl text-black font-bold"> Discover jobs across popular roles</h1>
           </figure>
 
 
           <div className="  flex justify-center items-center mx-auto   w-7/12 pt-14  ">
-        <div className="carousel carousel-end rounded-box border border-orange-300 shadow-lg mb-16  bg-red-300 bg-opacity-30  ">
+        <div className="carousel carousel-end rounded-box border border-blue-400 shadow-lg mb-16  bg-white bg-opacity-30  ">
 
           <div className="carousel-item cursor-pointer" >
                       {mockData.map((data) => {

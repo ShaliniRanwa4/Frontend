@@ -1,40 +1,39 @@
 import React, { useState } from 'react'
-import { checkSignInValidateData } from '../utils/validate';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { addUser } from '../utils/userSlice';
-
-const SignUp = () => {
 
 
-     const [firstName, setFirstName] = useState("");
-      const [lastName, setLastName] = useState("");
-      const [emailId, setEmailId] = useState("");
-      const [password, setPassword] = useState("");
-      const [confirmPassword,setConfirmPassword]=useState("")
-      const [error, setError] = useState(null);
+import { Link, useNavigate } from 'react-router-dom'
+import { checkSignInValidateData } from '../utils/validate'
 
-const navigate=useNavigate()
-const dispatch=useDispatch()
-
-
-      const handleSignInSubmit = () => {
-          const error = checkSignInValidateData(emailId, password);
-          if (error) {
-            setError("Error : " + error);
-            return;
-          }
-          // setError(null);
-        };
+const EmployeeSignUp = () => {
+    const [firstName,setFirstName]=useState("")
+    const [lastName,setLastName]=useState("")
+    const [emailId,setEmailId]=useState("")
+    const[password,setPassword]=useState("")
+    const [confirmPassword,setConfirmPassword]=useState("")
+    const [companyName,setCompanyName]=useState("")
+    const [error,setError]=useState("")
+    
+    const navigate=useNavigate()
 
 
-        const handleSignUp=()=>{
+
+     const handleSignInSubmit = () => {
+              const error = checkSignInValidateData(emailId, password);
+              if (error) {
+                setError("Error : " + error);
+                return;
+              }
+              // setError(null);
+            };
+
+
+
+ const handleSignUp=()=>{
           if(password!==confirmPassword){
             setError("Error : password & confirm password value should be same")
             return ;
           }
           setError(null)
-          dispatch(addUser({emailId:emailId,password:password,firstName:firstName,lastName:lastName}))
 
             return navigate("/admin/homepage")
         }
@@ -42,7 +41,7 @@ const dispatch=useDispatch()
 
   return (
     <div>
-    <div className="flex justify-center items-center h-screen mt-20 mb-32">
+    <div className="flex justify-center items-center h-screen mt-24 mb-32">
       <div className="card bg-base-300  w-96 shadow-xl ">
         <div className="card-body">
          
@@ -103,7 +102,7 @@ const dispatch=useDispatch()
             />
           </label>
 
-          <>
+          
             <label className="form-control w-full max-w-xs">
               <div className="label">
                 <span className="label-text">Confirm Password :</span>
@@ -116,19 +115,19 @@ const dispatch=useDispatch()
                 className="input input-bordered w-full max-w-xs"
               />
             </label>
-          {/* { isEmployee && <label className="form-control w-full max-w-xs">
-              <div className="label">
-                <span className="label-text">Company / Organization :</span>
-              </div>
-              <input
-                type="text"
-                placeholder="Company Name"
-                value={companyName}
-                onChange={(e) => setCompanyName(e.target.value)}
-                className="input input-bordered w-full max-w-xs"
-              />
-            </label>} */}
-          </>
+       
+            <label className="form-control w-full max-w-xs">
+                <div className="label">
+                  <span className="label-text">Company / Organization :</span>
+                </div>
+                <input
+                  type="text"
+                  placeholder="Company Name"
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
+                  className="input input-bordered w-full max-w-xs"
+                />
+              </label>
 
           <p className="text-red-400">{error}</p>
           <div
@@ -137,7 +136,7 @@ const dispatch=useDispatch()
           >
             <button className="btn btn-primary" onClick={handleSignUp}>Sign Up</button>
           </div>
-          <Link to={"/login"} className="cursor-pointer m-auto font-semibold">
+          <Link to={"/employeelogin"} className="cursor-pointer m-auto font-semibold">
             Already Registered ? Login here!!
           </Link>
         </div>
@@ -147,4 +146,4 @@ const dispatch=useDispatch()
   )
 }
 
-export default SignUp
+export default EmployeeSignUp

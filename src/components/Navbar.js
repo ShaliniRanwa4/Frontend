@@ -11,17 +11,24 @@ const Navbar = () => {
 
   const handleLogout=()=>{
     dispatch(removeUser())
-    return navigate('/home')
+    return navigate('/login')
+  }
+  const handleHomepage=()=>{
+    if(!user){
+     return navigate("/")
+    }else{
+      return navigate("/admin/homepage")
+    }
   }
  
   return (
 
 
-<nav className="flex items-center justify-between p-4 bg-base-300 text-white fixed w-full top-0 z-50 text-lg">
+<nav className="flex items-center justify-between p-2 bg-base-100 text-white fixed w-full top-0 z-50 text-lg cursor-pointer">
   
  
    <ul className="flex space-x-8 items-center">
-   <Link to={"/"}><div className="text-2xl font-bold">Job Portal </div></Link>
+   <li><div className="text-2xl font-bold" onClick={handleHomepage}>Job Portal </div></li>
     <li><Link to={'/home'} className="hover:text-gray-300">Home</Link></li>
     <li><Link to={"/companyreviews"} className="hover:text-gray-300">Company Reviews</Link></li>
     <li><Link to={'/contactus'} className="hover:text-gray-300">Contact Us</Link></li>
@@ -29,7 +36,7 @@ const Navbar = () => {
   <ul className="flex space-x-6 items-center">
     {/* <li><Link className="hover:text-gray-300">search</Link></li> */}
     {  !user && <><li><Link to={"/login"} className="hover:text-gray-300">Login </Link></li>
-    <li><Link to={"/login"} className="hover:text-gray-300">Employers / Post Job </Link></li></> }
+    <li><Link to={"/employeeLogin"} className="hover:text-gray-300">Employers / Post Job </Link></li></> }
     {user && <>
       <li><Link to={'/notification'} className="hover:text-gray-300 text-2xl">🕭</Link></li>
       <li><Link to={'/messages'} className="hover:text-gray-300 text-2xl">💬</Link></li>

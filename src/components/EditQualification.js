@@ -219,13 +219,13 @@ const EditQualification = () => {
   };
 
   return (
-    <div className="my-28">
-      <div className="w-1/3 container mx-auto">
+    <div className="top-28">
+      <div className="w-1/3 container mx-auto py-20">
         {/* Back Button */}
         <Link className="text-3xl my-2 text-white" to={"/profile"}>
           🔙
         </Link>
-        <h1 className="flex justify-start font-bold text-4xl text-white py-3 my-1">
+        <h1 className="flex justify-start font-bold text-4xl text-blue-500 py-3 my-1">
           Qualifications
         </h1>
         <span>

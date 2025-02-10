@@ -10,7 +10,7 @@ import Footer from "./Footer";
 
 const Body = () => {
   return (
-    <div className="">
+    <div className="bg-white">
       
         <Navbar></Navbar>
         <Outlet></Outlet>
